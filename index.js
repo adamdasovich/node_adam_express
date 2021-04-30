@@ -81,6 +81,39 @@ server.patch('/api/lessons/:id', (req, res) => {
             res.status(500).json({ message: 'Error updating record'})
         })
   
+    });
+
+    server.post('/api/lessons/:id/messages', (req, res) => {
+        const { id } = req.params;
+        const msg = req.body;
+
+        if (!msg.lesson_id) {
+            msg['lesson_id'] = parseInt(id, 10)
+        }
+
+        Lessons.findById(id)
+        .then(lesson => {
+            if (!lesson) {
+                res.status(404).json({ message: "invalid Id"})
+            }
+            // check for all required fields that we made not nullable
+            if (!msg.sender || !msg.text) {
+                res.status(400).json({ message: "Must provide both sender and text values."})
+            }
+
+            Lessons.addMessage(msg, id)
+            .then(message => {
+                if (message) {
+                    res.status(200).json(message)
+                }
+            })
+            .catch(error => {
+                res.status(500).json({ message: " Error, you dumb ass!"})
+            })
+        })
+        .catch(error => {
+            res.status(500).json({ message: "Error finding lesson"})
+        })
     })
 
 server.listen(PORT, () => {
