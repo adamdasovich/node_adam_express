@@ -1,0 +1,25 @@
+{
+  "name": "node_adam_express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamdasovich/node_adam_express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adamdasovich/node_adam_express/issues"
+  },
+  "homepage": "https://github.com/adamdasovich/node_adam_express#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.95.4",
+    "sqlite3": "^5.0.2"
+  }
+}
