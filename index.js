@@ -116,6 +116,18 @@ server.patch('/api/lessons/:id', (req, res) => {
         })
     })
 
+server.get('/api/lessons/:id/messages', (req, res) => {
+    const { id } = req.params;
+
+    Lessons.findLessonMessages(id)
+    .then(lessons => {
+        res.status(200).json(lessons);
+    })
+    .catch(error => {
+        res.status(500).json({ message: 'Error retrieving messages'})
+    })
+})
+
 server.listen(PORT, () => {
     console.log(`The server is now listening on port: ${PORT}`)
 });
