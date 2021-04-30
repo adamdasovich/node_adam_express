@@ -17,6 +17,7 @@ exports.up = function(knex) {
 
       tbl.integer('lesson_id')
         .unsigned()
+        .notnullable()
         .references('id')
         .inTable('lessons')
         .onDelete('CASCADE')

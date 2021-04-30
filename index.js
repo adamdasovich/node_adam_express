@@ -70,16 +70,17 @@ server.patch('/api/lessons/:id', (req, res) => {
     const changes = req.body;
 
     Lessons.update(id, changes)
-    .then(lesson => {
-        if (lesson) {
-            res.status(200).json(lesson)
-        }else{
-            res.status(404).json({ message: 'this did not work'})
-        }
-    })
-    .catch(error => {
-        res.status(505).json({ message: 'You fucked this up real good'})
-    })
+        .then(lesson => {
+            if (lesson) {
+                res.status(200).json(lesson)
+            }else{
+                res.status(404).json({ message: "Record not found"})
+            }
+        })
+        .catch(err => {
+            res.status(500).json({ message: 'Error updating record'})
+        })
+  
     })
 
 server.listen(PORT, () => {
