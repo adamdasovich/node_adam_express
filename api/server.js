@@ -8,7 +8,7 @@ const server = express();
 server.use(express.json());
 
 server.get('/', (req, res) => {
-    res.status(200).json({message: "I hope it works this time."})
+    res.status(200).json({message: "So far all is good, however, the tricky part is next."})
 });
 
 server.use('/api/lessons', lessonsRouter);
