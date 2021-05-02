@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "watch": "nodemon",
     "start": "node index.js"
   },
   "repository": {
@@ -23,5 +24,8 @@
     "knex": "^0.95.4",
     "pg": "^8.6.0",
     "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
