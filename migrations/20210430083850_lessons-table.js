@@ -14,7 +14,7 @@ exports.up = function(knex) {
       tbl.text('text')
         .notNullable()
       tbl.timestamps(true, true)
-
+// Foreign Key
       tbl.integer('lesson_id')
         .unsigned()
         .notNullable()
