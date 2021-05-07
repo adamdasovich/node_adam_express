@@ -1,8 +1,8 @@
 // This file is where we write our knex queries.
-//const knex = require('knex');
-//const config = require('../knexfile')
-//const db = knex(config.development)
-const db = require('../dbConfig')
+const knex = require('knex');
+const config = require('../knexfile')
+const db = knex(config.development)
+
 
 //add, find, findById, remove, update
 
@@ -18,9 +18,9 @@ module.exports = {
 };
 
 async function add(lesson){
-    return await db('lessons').insert(lesson, ['id', 'name'])
-    //const [id] = await db('lessons').insert(lesson);
-   // return id
+    //return await db('lessons').insert(lesson, ['id', 'name'])
+    const [id] = await db('lessons').insert(lesson);
+    return findById (id);
 }
 
 function find() {
@@ -42,7 +42,7 @@ function remove(id) {
 function update(id, changes) {
     return db('lessons')
         .where({ id })
-        .update(changes, [id])
+        .update(changes)
         .then(() => {
             return findById(id);
         });
